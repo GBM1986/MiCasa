@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Layout } from './layout/Layout.jsx';
 import { Forside } from './pages/Forside.jsx'
+import { SupabaseProvider } from './providers/SupabaseProvider.jsx';
+import { AuthProvider } from './providers/AuthProvider.jsx';
+
 
 function App() {
   return (
