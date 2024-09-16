@@ -1,0 +1,5 @@
+id,firstname,lastname,position,image_url,phone,email
+1,Vilfred,Jungersen,Salg og vurdering,https://api.mediehuset.net/images/micasa/viju.jpg,11223344,viju@homelands.dk
+2,Gunna,Pippaloo,Administration og salg,https://api.mediehuset.net/images/micasa/gupi.jpg,22334455,gupi@homelands.dk
+3,Verner,Flemming,"Partner, salg og vurdering",https://api.mediehuset.net/images/micasa/vefk.jpg,55443322,vefk@homelands.dk
+4,Sysser,Schmidt,"Partner, salg og vurdering",https://api.mediehuset.net/images/micasa/sysc.jpg,77665544,sysc@homelands.dk
