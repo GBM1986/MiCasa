@@ -4,6 +4,9 @@ import { Layout } from './layout/Layout.jsx';
 import { Forside } from './pages/Forside.jsx'
 import { SupabaseProvider } from './providers/SupabaseProvider.jsx';
 import { AuthProvider } from './providers/AuthProvider.jsx';
+import { Login } from './pages/Login.jsx';
+import { Boliger } from './pages/Boliger.jsx';
+import { Kontakt } from './pages/Kontakt.jsx';
 
 
 function App() {
@@ -15,6 +18,9 @@ function App() {
             {/* Define a layout wrapper for consistent page structure */}
             <Route path="/" element={<Layout />}>
             <Route index element={<Forside />} />
+            <Route path='/boliger' element={<Boliger />} />
+            <Route path='/kontakt' element={<Kontakt />} />
+            <Route path="/login" element={<Login />} />
             </Route>
           </Routes>
         </Router>

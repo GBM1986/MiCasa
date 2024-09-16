@@ -6,19 +6,19 @@ export const Header = () => {
   return (
     <div className="relative  bg-cover bg-center" style={{ backgroundImage: `url(${bgImage})` }}>
       <div className="absolute inset-0">
-        <div className="relative w-full overflow-hidden rotate-180">
-          <svg
-            className="relative w-[103%] h-[60px]"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,120V0H1200V120Z"
-              className="fill-raisin-black"
-              fill="#FFFFFF"
-            ></path>
-          </svg>
+      <div className="relative w-full overflow-hidden">
+        <svg
+          width="1280"
+          height="50"
+          viewBox="0 0 1280 104"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 103.5L361.79 70.8042L1280 103.5V0H0V103.5Z"
+            fill="#1D1E2C"
+          />
+        </svg>
         </div>
         <Navbar />
       </div>

@@ -10,7 +10,7 @@ export const Navbar = () => {
 
   // Mobile menu content
   const mobileMenu = (
-    <div className="absolute left-0 right-0 bg-white z-20 p-4 mt-16 xl:hidden">
+    <div className="absolute left-0 right-0 bg-white z-20 p-4 mt-32 xl:hidden">
       <ul className="text-lg space-y-4">
         <li>
           <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Forside</Link>

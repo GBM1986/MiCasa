@@ -59,14 +59,14 @@ export const Footer = () => {
               <form className="flex flex-row ">
               <CiAt className='bg-rose-quartz text-white rounded-l-md text-4xl p-2 mt-2' />
                 <input
-                  className="px-4 py-[7px] w-64 max-w-md border border-gray-200  focus:outline-none focus:border-blue-500 self-end text-black"
+                  className="px-4 py-[7px] w-64 max-w-md border border-lavender  focus:outline-none focus:border-blue-500 self-end text-black"
                   type="email"
                   placeholder="Indtast din email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <button
-                  className="px-4 py-2 w-32 mt-2 text-white rounded-r-md bg-rose-quartz hover:bg-blue-600 self-end"
+                  className="px-4 py-2 w-32 mt-2 text-white rounded-r-md bg-rose-quartz hover:bg-thistle self-end"
                   type="submit"
                   onClick={handleSubmit}
                 >
