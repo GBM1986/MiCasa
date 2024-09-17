@@ -1,7 +1,15 @@
-import React from 'react'
+import React from 'react';
+import { EstateCard } from '../components/EstateCard';
+import { Reviews } from '../components/Reviews';
+
 
 export const Forside = () => {
   return (
-    <div>Forside</div>
-  )
-}
+    <main>
+        <EstateCard />
+        <Reviews />
+    </main>
+  );
+};
+
+export default Forside;
