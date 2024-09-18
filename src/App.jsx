@@ -7,6 +7,7 @@ import { AuthProvider } from './providers/AuthProvider.jsx';
 import { Login } from './pages/Login.jsx';
 import { Boliger } from './pages/Boliger.jsx';
 import { Kontakt } from './pages/Kontakt.jsx';
+import { BoligerDetail } from './pages/BoligerDetail.jsx';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" element={<Layout />}>
             <Route index element={<Forside />} />
             <Route path='/boliger' element={<Boliger />} />
+            <Route path='/boliger/:id' element={<BoligerDetail />} />
             <Route path='/kontakt' element={<Kontakt />} />
             <Route path="/login" element={<Login />} />
             </Route>

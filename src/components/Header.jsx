@@ -5,12 +5,12 @@ import Hero from './Hero'
 
 export const Header = () => {
   return (
-    <div className="relative  bg-cover bg-center" style={{ backgroundImage: `url(${bgImage})` }}>
-      <div className="absolute inset-0">
-        <div className="relative w-full overflow-hidden">
+    <div>
+      <div className="absolute inset-0 h-[50px]">
+        <div className="relative w-full overflow-hidden z-20">
             <svg
-            width="1280"
-            height="50"
+            width="100%"
+            height="100%"
             viewBox="0 0 1280 104"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -21,10 +21,12 @@ export const Header = () => {
             />
             </svg>
         </div>
+        <div className='mt-[-140px]'>
         <Navbar />
          <Hero />
+         </div>
       </div>
-      <div className="flex flex-col justify-center items-center p-5 w-[269px] ml-[50px] bg-rose-quartz rounded-lg shadow-lg mt-[60px] relative z-10">
+      <div className="flex flex-col justify-center items-center p-5 w-[269px] ml-[50px] bg-rose-quartz rounded-lg shadow-lg mt-[60px] relative z-20">
         {/* Adjust margin-top here to move the logo down */}
         <h1 className="text-white font-poller text-[46px] leading-[55px] tracking-wider font-outline-3">
           MiCasa

@@ -30,7 +30,7 @@ export const Hero = () => {
   }
 
   return (
-    <section aria-label="Slideshow" className="relative w-full h-[600px]">
+    <section aria-label="Slideshow" className="relative w-full h-[700px] z-10">
       {/* Slideshow Wrapper */}
       <div className="relative z-[-1] w-full h-full">
         {/* Image */}
