@@ -2,8 +2,22 @@ import React from 'react'
 import bgImage from '../assets/Images/headerbg-MiCasa.png'
 import { Navbar } from './Navbar'
 import Hero from './Hero'
+import { useAuth } from '../providers/AuthProvider'
+import { RiLogoutCircleLine } from "react-icons/ri";
 
 export const Header = () => {
+
+  const { loginData, handleLogout } = useAuth(); // Destructure loginData and handleLogout from AuthProvider
+  const userEmail = loginData?.user?.email;
+
+  const onLogout = async () => {
+    try {
+      await handleLogout();
+    } catch (error) {
+      console.error('Error logging out:', error); // Basic error handling for logout
+    }
+  };
+
   return (
     <div>
       <div className="absolute inset-0 h-[50px]">
@@ -35,7 +49,18 @@ export const Header = () => {
           Autoriseret mæglerhus
         </p>
       </div>
-     
+
+      <div className="flex justify-end mr-10 p-5">
+        <button
+          className="flex bg-rose-quartz px-4 py-2 rounded-md gap-2 hover:bg-kaki mt-4"
+          aria-label="Logout Button"
+          onClick={onLogout}
+        >
+          <span>Logout</span>
+          <RiLogoutCircleLine className="text-xl mt-1" />
+        </button>
+      </div>
+          
     </div>
   )
 }

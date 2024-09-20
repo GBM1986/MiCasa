@@ -1,6 +1,7 @@
 import React from 'react';
 import { EstateCard } from '../components/EstateCard';
 import { Reviews } from '../components/Reviews';
+import { Ansatte } from '../components/Ansatte';
 
 
 export const Forside = () => {
@@ -8,6 +9,7 @@ export const Forside = () => {
     <main>
         <EstateCard />
         <Reviews />
+        <Ansatte />
     </main>
   );
 };

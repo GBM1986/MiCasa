@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaTimes } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { FaTimes, FaSearch } from 'react-icons/fa';
 import { CiMenuBurger } from 'react-icons/ci';
-import { FaSearch } from 'react-icons/fa';
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate(); // Use navigate for redirection
+
+  // Handle search and redirect to Search page with query parameter
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      navigate(`/search?query=${encodeURIComponent(searchQuery)}`);
+    }
+  };
 
   // Mobile menu content
   const mobileMenu = (
-    <div className="absolute left-0 right-0 bg-white z-20 p-4 mt-64 xl:hidden">
+    <div className="absolute left-0 right-0 bg-rose-quartz z-20 p-4 mt-72 xl:hidden">
       <ul className="text-lg space-y-4">
         <li>
           <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Forside</Link>
@@ -24,7 +31,7 @@ export const Navbar = () => {
         <li>
           <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>Login</Link>
         </li>
-        <li className="flex items-center bg-gray-200 p-2 rounded-md">
+        <li className="flex items-center bg-thistle p-2 rounded-md">
           <input
             type="text"
             placeholder="Search..."
@@ -32,7 +39,7 @@ export const Navbar = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="p-2 rounded-md border-none w-full"
           />
-          <FaSearch className="ml-2 text-gray-600" />
+          <FaSearch className="ml-2 text-lavender cursor-pointer" onClick={handleSearch} />
         </li>
       </ul>
     </div>
@@ -42,7 +49,7 @@ export const Navbar = () => {
     <nav className="relative z-20">
       {/* Mobile Menu Toggle Button */}
       <button
-        className="xl:hidden text-lavender text-2xl absolute top-4 right-4 z-30 mt-20"
+        className="xl:hidden text-raisin-black text-2xl absolute top-4 right-4 z-30 mt-32"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >
         {isMobileMenuOpen ? <FaTimes /> : <CiMenuBurger />}
@@ -73,11 +80,10 @@ export const Navbar = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="px-4 py-2 rounded-l-lg border-none w-full text-paynes-gray"
           />
-          <FaSearch className=" text-white text-5xl bg-paynes-gray p-2 rounded-r-lg" />
+          <FaSearch className="text-white text-5xl bg-paynes-gray p-2 rounded-r-lg cursor-pointer" onClick={handleSearch} />
         </li>
       </ul>
     </nav>
   );
 };
 
-export default Navbar;

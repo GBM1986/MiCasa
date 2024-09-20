@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useSupabase } from '../providers/SupabaseProvider';
 import { useForm } from 'react-hook-form';
 
-export const Reviews = ({ stationId, bannerArticle }) => {
+export const Reviews = () => {
     const { supabase } = useSupabase();
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
     const [showReviewForm, setShowReviewForm] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0); // Track the current review index
 
     const {
         register: registerNewReview,
@@ -15,12 +16,13 @@ export const Reviews = ({ stationId, bannerArticle }) => {
         reset: resetNewReview
     } = useForm({
         defaultValues: {
-            name: '',
-            email: '',
-            comment: ''
+            title: '',
+            content: '',
+            num_stars: 1
         }
     });
 
+    // Fetch reviews and user data
     useEffect(() => {
         const fetchReviews = async () => {
             if (!supabase) {
@@ -59,8 +61,18 @@ export const Reviews = ({ stationId, bannerArticle }) => {
 
         fetchReviews();
         fetchUser();
-    }, [supabase, stationId]);
+    }, [supabase]);
 
+    // Auto-slide reviews every 5 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % reviews.length);
+        }, 5000); // Change review every 5 seconds
+
+        return () => clearInterval(interval); // Cleanup interval on component unmount
+    }, [reviews]);
+
+    // Add a new review
     const onAddReview = async (formData) => {
         if (!supabase || !user) {
             console.error('Supabase client is not initialized or user is not authenticated');
@@ -71,9 +83,9 @@ export const Reviews = ({ stationId, bannerArticle }) => {
             .from('reviews')
             .insert([
                 { 
-                    name: formData.name,
-                    email: formData.email,
-                    comment: formData.c,
+                    title: formData.title,
+                    content: formData.content,
+                    num_stars: formData.num_stars,
                     user_id: user.id,
                     is_active: true
                 }
@@ -92,58 +104,50 @@ export const Reviews = ({ stationId, bannerArticle }) => {
 
     return (
         <div>
-           
+            <h3 className="text-heading-1 font-poppins font-semibold flex justify-center  mb-6 mt-20">Det siger vores kunder</h3>
             <button
                 onClick={() => setShowReviewForm(!showReviewForm)}
-                className="w-full bg-black text-white py-2 mt-4 flex justify-center items-center"
+                className="w-full bg-rose-quartz text-[#D5D5D5] py-2 mt-4 flex justify-center items-center"
             >
-                {showReviewForm ? 'Hide Review Form' : 'Add a Review'}
+             {showReviewForm ? ' Skjul anmeldelsesformular ' : 'Skriv en anmeldelse'}
             </button>
 
             {showReviewForm && user && (
-                <div className="mt-4 p-4 border border-gray-300 rounded-md bg-lightGreen">
-                    <h3 className="text-heading-3 font-semibold mb-2">Add a Review</h3>
-                    <form onSubmit={handleSubmitNewReview(onAddReview)} className="space-y-4">
+                <div className=" bg-paynes-gray p-4 border border-gray-300 bg-lightGreen">
+                    
+                    <form onSubmit={handleSubmitNewReview(onAddReview)} className="space-y-4 w-[600px] mx-auto">
+                        
+                        <label htmlFor="">Titel</label>
                         <input
-                            {...registerNewReview('name')}
-                            placeholder="Name"
+                            {...registerNewReview('title')}
+                            placeholder="Title"
                             className="block w-full mb-2 px-3 py-2 border border-gray-300 rounded-md"
                         />
-                        <input
-                            type="email"
-                            {...registerNewReview('email')}
-                            placeholder="Email"
-                            className="block w-full mb-2 px-3 py-2 border border-gray-300 rounded-md"
-                        />
+                        <label htmlFor="">Indhold</label>
                         <textarea
-                            {...registerNewReview('comment')}
-                            placeholder="Comment"
+                            {...registerNewReview('content')}
+                            placeholder="Content"
                             className="block w-full mb-2 px-3 py-2 border border-gray-300 rounded-md"
                         />
                         <button 
                             type="submit"
-                            className="bg-forrestGreen text-black px-4 py-2 rounded-md hover:bg-deepGreen"
+                            className="bg-lavender text-paynes-gray hover:bg-thistle px-4 py-2 rounded-md hover:bg-deepGreen"
                         >
-                            Add Review
+                            Send
                         </button>
                     </form>
                 </div>
             )}
 
             {reviews.length > 0 ? (
-                reviews.map(review => (
-                    <div key={review.id} className="p-4 mb-4 bg-white border border-gray-200 rounded-md shadow-sm">
-                        <p><strong>Name:</strong> {review.name}</p>
-                        <p><strong>Email:</strong> {review.email}</p>
-                        <p><strong>Comment:</strong> {review.comment}</p>
-                        <p><strong>Date:</strong> {new Date(review.created_at).toLocaleDateString()}</p>
-                    </div>
-                ))
+                <div className="p-4 mb-4 bg-lavender flex flex-col items-center py-12">
+                    <p><strong>{reviews[currentIndex].title}</strong> </p>
+                    <p>{reviews[currentIndex].content}</p>
+                    <p>{new Date(reviews[currentIndex].created_at).toLocaleDateString()}</p>
+                </div>
             ) : (
                 <p className="text-center text-xl">No reviews available.</p>
             )}
         </div>
     );
 };
-
-export default Reviews;

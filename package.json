@@ -21,6 +21,8 @@
     "react-minimal-modal": "^2.1.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.26.2",
+    "react-select": "^5.8.1",
+    "sass": "^1.79.1",
     "tailwindcss": "^3.4.11"
   },
   "devDependencies": {

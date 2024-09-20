@@ -8,6 +8,7 @@ import { Login } from './pages/Login.jsx';
 import { Boliger } from './pages/Boliger.jsx';
 import { Kontakt } from './pages/Kontakt.jsx';
 import { BoligerDetail } from './pages/BoligerDetail.jsx';
+import Search from './pages/Search.jsx';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path='/boliger/:id' element={<BoligerDetail />} />
             <Route path='/kontakt' element={<Kontakt />} />
             <Route path="/login" element={<Login />} />
+            <Route path='/search' element={<Search />} />
             </Route>
           </Routes>
         </Router>
