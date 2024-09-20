@@ -4,6 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* for the main logo */
 @layer base {
     .font-outline-3 {
       -webkit-text-stroke: 2px black;

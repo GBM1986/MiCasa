@@ -5,27 +5,29 @@ $text-color: #fff;
 $transition-duration: 0.3s;
 $scale-hover: 1.05;
 
-// Mixins
+// Mixin for applying transitions to CSS properties
 @mixin transition($property, $duration, $ease) {
-  transition: $property $duration $ease;
+  transition: $property $duration $ease;// Standard CSS transition property
 }
 
+// Mixin for setting up the image container
 @mixin image-container {
   position: relative;
   width: 232px;
   height: 325px;
-  overflow: hidden; // Ensures image does not overflow container
+  overflow: hidden;
 }
 
+// Mixin for creating an overlay
 @mixin overlay {
   position: absolute;
   left: 0;
   right: 0;
   padding: 1rem;
-  background-color: rgba($primary-bg-color, $overlay-opacity);
+  background-color: rgba($primary-bg-color, $overlay-opacity);// Semi-transparent background
   color: $text-color;
   text-align: center;
-  @include transition(transform, $transition-duration, ease);
+  @include transition(transform, $transition-duration, ease);// Apply transition for transform property
 }
 
 // Main Styles

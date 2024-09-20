@@ -265,7 +265,8 @@ export const BoligerDetail = () => {
               <p className='flex justify-between'>Ombygget <span>{boligerDetail.year_rebuilt}</span></p>
               <p className='flex justify-between items-center'>
                 Energimærke
-                <span className='px-2 py-1 text-center' style={{ backgroundColor: `#${boligerDetail.energy_labels.color}` }}>
+                 {/* somethings need inline style to work (cant use Tailwindcss) */}
+                <span className='px-2 py-1 text-center' style={{ backgroundColor: `#${boligerDetail.energy_labels.color}` }}> 
                   {boligerDetail.energy_labels.letter}
                 </span>
               </p>

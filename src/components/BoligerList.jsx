@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Select from 'react-select'; // Ensure you have react-select installed
+import Select from 'react-select'; 
 import { useSupabase } from '../providers/SupabaseProvider';
 import { Link } from 'react-router-dom';
 
@@ -67,19 +67,18 @@ export const BoligerList = () => {
   }, [propertyType, sortOption, bolig]);
 
   const propertyOptions = [
-    { value: null, label: 'All Types' },
+    { value: null, label: 'Alle Typer' },
     { value: 'Villa', label: 'Villa' },
     { value: 'Andelsbolig', label: 'Andelsbolig' },
     { value: 'Ejerlejlighed', label: 'Ejerlejlighed' }
-    // Add more options based on your Supabase data
   ];
 
   const sortOptions = [
-    { value: null, label: 'All Types' },
+    { value: null, label: 'Alle Typer' },
     { value: 'price-descending', label: 'Pirs - Stigende' },
     { value: 'price-ascending', label: 'Pris - Faldende' },    
     { value: 'floor-space', label: 'Antal kvadratmeter' },
-    { value: 'days-on-market', label: 'Liggetid - Faldende' }
+    { value: 'days-on-market', label: 'Liggetid -faldende' }
   ];
 
   const handlePropertyTypeChange = (selectedOption) => {
@@ -99,6 +98,7 @@ export const BoligerList = () => {
 
   return (
     <div className='px-10'>
+        <h1 className='text-heading-1 mb-2'>Boliger til salg</h1>
       <div className='flex justify-end gap-4 mb-6 w-full'>
         <Select
           options={propertyOptions}
@@ -122,7 +122,7 @@ export const BoligerList = () => {
               <img
                 src={item.estate_image_rel[0]?.image_id?.image_url || 'default-image-url'}
                 alt={item.address || 'No Address'}
-                className='w-full h-48 object-cover'
+                className='w-full h-48 object-cover p-2'
               />
 
               {/* Card Details */}

@@ -17,8 +17,7 @@ export const Reviews = () => {
     } = useForm({
         defaultValues: {
             title: '',
-            content: '',
-            num_stars: 1
+            content: ''
         }
     });
 

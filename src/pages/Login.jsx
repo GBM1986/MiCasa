@@ -80,7 +80,7 @@ export const Login = () => {
         <div className="max-w-md mx-auto">
           <MinSide />
           <p className="mt-4 p-2 border rounded-md bg-green-100 text-green-800">Du er logget ind som {`${loginData.user.email}`}</p>
-          <button className='bg-[#5F657B] px-16 py-2 text-white font-light rounded-sm mt-2' onClick={handleLogout}>Log ud</button>
+          <button className='bg-lavender text-paynes-gray rounded-md px-4 py-2 hover:bg-thistle mt-2' onClick={handleLogout}>Log ud</button>
         </div>
       )}
     </div>

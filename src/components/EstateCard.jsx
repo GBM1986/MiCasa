@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSupabase } from '../providers/SupabaseProvider'; // Ensure correct hook usage
+import { useSupabase } from '../providers/SupabaseProvider'; 
 import { Link } from 'react-router-dom';
 
 export const EstateCard = () => {
@@ -27,7 +27,7 @@ export const EstateCard = () => {
         if (error) {
           console.error('Error fetching properties:', error);
         } else {
-          const randomProperties = data.sort(() => 0.5 - Math.random()).slice(0, 3); // Randomize and take 3
+          const randomProperties = data.sort(() => 0.5 - Math.random()).slice(0, 3); // Randomize and take 3, When you pass a comparison function like () => 0.5 - Math.random(), it randomizes the order of the elements: 
           setProperties(randomProperties);
         }
       }
@@ -52,7 +52,7 @@ export const EstateCard = () => {
             <img
               src={property.estate_image_rel[0]?.image_id?.image_url || 'default-image-url.jpg'}
               alt={property.address || 'No address available'}
-              className='w-full h-48 object-cover'
+              className='w-full h-48 object-cover p-2'
             />
 
             {/* Card Details */}

@@ -75,6 +75,17 @@ export const Kontakt = () => {
               {errors.name && <div className="text-xs text-red-600">Navn er påkrævet</div>}
             </div>
             <div className='flex justify-between'>
+              <label className='text-md self-center' htmlFor="email">Email:</label>
+              <input
+                className='w-full max-w-[480px] p-2 border-2'
+                placeholder='Indtast dit email'
+                type="text"
+                id="email"
+                {...register("email", { required: true })}
+              />
+              {errors.name && <div className="text-xs text-red-600">Email er påkrævet</div>}
+            </div>
+            <div className='flex justify-between'>
               <label className='text-md self-center' htmlFor="employeeId">Ansat:</label>
               <select
                 className='w-full max-w-[480px] p-2 border-2'
